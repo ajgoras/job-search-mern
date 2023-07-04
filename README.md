@@ -15,7 +15,7 @@ _Job search application created in MERN stack._
 - Add a new job offer (on behalf of your company only) ➕
 - Remove job offers (only belonging to your company) ✖️
 - Admin account can delete all offers, browse all applications, add offers on behalf of other companies 👨🏼‍💻
-- Simple tests ✅
+- Tests of the most important functionalities and components ✅
 
 ### Live Link:
 [Job Search live link](https://jobsearchmern.netlify.app/)
