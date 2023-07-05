@@ -90,6 +90,13 @@
   padding: 5px;
 }
 
+.warning-info-div
+{
+  display: flex;
+  justify-content: center;
+  padding: 5px 0 20px 0;
+}
+
 @media only screen and (max-width: 420px){
   #register-form {
     padding: 0px 40px 10px 0px;
