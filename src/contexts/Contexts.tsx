@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { DisplayOffer } from "../types/DisplayOffer";
-import { LoggedUser } from "../types/LoggedUser";
+import { LoggedUser, defaultLoggedUserState } from "../types/LoggedUser";
 import { Application } from "../types/Application";
 
 export const Contexts = createContext<any>(null);
@@ -14,12 +14,7 @@ export function ContextsProvider({ children }: any) {
     if (sessionStorageValue !== null) {
       return JSON.parse(sessionStorageValue);
     } else {
-      return {
-        email: "",
-        password: "",
-        company_name: "",
-        logo: "",
-      };
+      return defaultLoggedUserState;
     }
   });
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(() => {
