@@ -44,6 +44,7 @@ function LoginModal(props: any) {
       if (res.data.status === "ok") {
         setHeaderMessage("Logged in!");
         setMessage(`Successfully logged as ${email}`);
+        setAlertModalShow(true);
         handleLogin({
           email: email,
           password: password,
@@ -52,7 +53,6 @@ function LoginModal(props: any) {
         });
         setEmail("");
         setPassword("");
-        setAlertModalShow(true);
         window.localStorage.setItem("token", res.data.data);
       } else {
         setMessage("Bad login or password!");
