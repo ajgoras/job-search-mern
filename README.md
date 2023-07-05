@@ -31,7 +31,7 @@ _You have to wait for the backend server to start up, because it runs on free ho
 ![Mongo](https://img.shields.io/badge/-mongoDB-darkolivegreen?style=for-the-badge&logo=mongodb) ![Express](https://img.shields.io/badge/-express-seagreen?style=for-the-badge&logo=express) ![React](https://img.shields.io/badge/-react-darkslategrey?style=for-the-badge&logo=react)  ![Node](https://img.shields.io/badge/-node.js-darkseagreen?style=for-the-badge&logo=node.js)\
 ![typescript](https://img.shields.io/badge/-typescript-yellow?style=for-the-badge&logo=typescript) ![html](https://img.shields.io/badge/-html-green?style=for-the-badge&logo=html5) ![css](https://img.shields.io/badge/-css-blue?style=for-the-badge&logo=css3) ![Bootstrap](https://img.shields.io/badge/-bootstrap-darkslateblue?style=for-the-badge&logo=bootstrap)\
 ![Axios](https://img.shields.io/badge/-Axios-purple?style=for-the-badge&logo=axios) ![Axios](https://img.shields.io/badge/-React--Router-cadetblue?style=for-the-badge&logo=react-router) ![react-reveal](https://img.shields.io/badge/-Testing_Library-black?style=for-the-badge&logo=testing-library)
-![cloudinary](https://img.shields.io/badge/-cloudinary-blue?style=for-the-badge&logo=cloudinary)![papaparse](https://img.shields.io/badge/-papaparse-green?style=for-the-badge&logo=papaparse) ![react-reveal](https://img.shields.io/badge/-react--reveal-teal?style=for-the-badge&logo=react-reveal) 
+![cloudinary](https://img.shields.io/badge/-cloudinary-blue?style=for-the-badge&logo=cloudinary) ![papaparse](https://img.shields.io/badge/-papaparse-green?style=for-the-badge&logo=papaparse) ![react-reveal](https://img.shields.io/badge/-react--reveal-teal?style=for-the-badge&logo=react-reveal) 
 
 
 ### External APIs:
