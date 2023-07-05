@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-.form-section{
+.form-section {
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -18,7 +18,7 @@
   overflow: hidden;
 }
 
-.form-input{
+.form-input {
   font-size: 18px;
   width: 300px;
   height: 100%;
@@ -28,12 +28,13 @@
   border: none;
   outline: none;
 }
-.form-input::placeholder{
-  opacity: 0.4;  
+
+.form-input::placeholder {
+  opacity: 0.4;
   font-size: 15px;
 }
 
-.input-label{
+.input-label {
   position: absolute;
   border-bottom: 1px solid #0000007b;
   width: 100%;
@@ -41,7 +42,7 @@
   pointer-events: none;
 }
 
-.input-label::after{
+.input-label::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -53,7 +54,7 @@
   transition: all .3s ease;
 }
 
-.form-input:focus + .input-label::after{
+.form-input:focus+.input-label::after {
   transform: translateX(0%);
 }
 
@@ -63,20 +64,20 @@
   transition: all .3s ease;
 }
 
-.form-input:focus + .input-label .label-name{
+.form-input:focus+.input-label .label-name {
   bottom: 35px;
   font-weight: bold;
   font-size: 14px;
   color: #305291;
 }
 
-.form-input:valid + .input-label .label-name{
+.form-input:valid+.input-label .label-name {
   bottom: 35px;
   font-weight: bold;
   font-size: 14px;
 }
 
-.form-input-filled + .input-label .label-name{
+.form-input-filled+.input-label .label-name {
   bottom: 35px;
   font-weight: bold;
   font-size: 14px;
@@ -90,14 +91,13 @@
   padding: 5px;
 }
 
-.warning-info-div
-{
+.warning-info-div {
   display: flex;
   justify-content: center;
-  padding: 5px 0 20px 0;
+  padding: 2px 0 15px 0;
 }
 
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 420px) {
   #register-form {
     padding: 0px 40px 10px 0px;
   }
