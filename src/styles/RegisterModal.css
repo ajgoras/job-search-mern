@@ -97,6 +97,24 @@
   padding: 2px 0 15px 0;
 }
 
+.warning-info-div Button {
+  height: 24px;
+  width: 34px;
+  font-size: 15px;
+  padding: 6px;
+  background-color: #2d4157;
+  border: solid 1px rgba(209, 209, 209, 0.391);
+}
+
+.warning-info-div Button:hover {
+  background-color: #5a728e;
+  border: solid 1px #1b1b1b00;
+}
+
+.warning-info-div Button:active {
+  background-color: #2d4157 !important;
+}
+
 @media only screen and (max-width: 420px) {
   #register-form {
     padding: 0px 40px 10px 0px;
