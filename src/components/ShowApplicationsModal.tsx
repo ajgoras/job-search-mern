@@ -7,6 +7,8 @@ import { axiosUrls } from "../axiosUrls/axiosUrls";
 import { ContextsType } from "../types/ContextsType";
 import { Contexts } from "../contexts/Contexts";
 import { useNavigate } from "react-router-dom";
+import { defaultLoggedUserState } from "../types/LoggedUser";
+import { Button } from "react-bootstrap";
 
 const ShowApplicationsModal = (props: any) => {
   const { applications, overwriteApplications }: ContextsType =
@@ -53,42 +55,66 @@ const ShowApplicationsModal = (props: any) => {
         }}
       >
         <Modal.Title id="contained-modal-title-vcenter">
-          Applications
+          {loggedUser === defaultLoggedUserState ? (
+            <div>You are not logged in</div>
+          ) : (
+            <div>Applications</div>
+          )}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div id="applicationsOutputDiv" title="applicationsOutputDiv">
-          {filterApplications().map((application) => {
-            return (
-              <div key={application._id}>
-                <p>
-                  Application for company:{" "}
-                  <span style={{ fontWeight: "bold" }}>
-                    {application.company_name}
-                  </span>
-                </p>
-                <div className="applicationOutputLogoDiv">
-                  <img alt="job_company_image" src={application.logo}></img>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Job info:</h5>
-                    <p>{application.ad_content}</p>
-                    <p>Seniority: {application.seniority}</p>
-                    <p>Technologies: {application.technologies}</p>
+        {loggedUser === defaultLoggedUserState ? (
+          <div>
+            <div className="warning-info-div">
+              <p>Log in to your company account to view applications</p>
+            </div>
+            <div className="warning-info-div">
+              <Button
+                onClick={() => {
+                  setShow(false);
+                  setTimeout(() => {
+                    navigate("/");
+                  }, 100);
+                }}
+              >
+                OK
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div id="applicationsOutputDiv" title="applicationsOutputDiv">
+            {filterApplications().map((application) => {
+              return (
+                <div key={application._id}>
+                  <p>
+                    Application for company:{" "}
+                    <span style={{ fontWeight: "bold" }}>
+                      {application.company_name}
+                    </span>
+                  </p>
+                  <div className="applicationOutputLogoDiv">
+                    <img alt="job_company_image" src={application.logo}></img>
+                    <div>
+                      <h5 style={{ fontWeight: "bold" }}>Job info:</h5>
+                      <p>{application.ad_content}</p>
+                      <p>Seniority: {application.seniority}</p>
+                      <p>Technologies: {application.technologies}</p>
+                    </div>
                   </div>
+                  <p>Name: {application.firstName}</p>
+                  <p>Lastname: {application.lastName}</p>
+                  <p>e-mail: {application.email}</p>
+                  <p>
+                    CV: <a href={application.cv}>Download CV</a>
+                  </p>
+                  <br></br>
+                  <hr></hr>
+                  <br></br>
                 </div>
-                <p>Name: {application.firstName}</p>
-                <p>Lastname: {application.lastName}</p>
-                <p>e-mail: {application.email}</p>
-                <p>
-                  CV: <a href={application.cv}>Download CV</a>
-                </p>
-                <br></br>
-                <hr></hr>
-                <br></br>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </Modal.Body>
     </Modal>
   );
