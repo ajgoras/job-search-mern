@@ -99,6 +99,19 @@ export default function SearchBarWithJobBar() {
           </form>
         </Fade>
       </div>
+      <Fade delay={290} duration={850}>
+        <div id="sortingContainer">
+          <div id="sortingLabelContainer">
+            <label>Sorting</label>
+          </div>
+          <select>
+            <option>latest</option>
+            <option>oldest</option>
+            <option>highest salary</option>
+            <option>lowest salary</option>
+          </select>
+        </div>
+      </Fade>
       <Fade delay={350} duration={900}>
         <JobBar
           searchText={searchText}
