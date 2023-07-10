@@ -102,7 +102,11 @@ export default function JobBar({ searchText, searchTags }: any) {
     axios
       .get(axiosUrls.getOffersUrl)
       .then((res) => {
-        overwriteJobs(res.data);
+        overwriteJobs(
+          res.data.sort((a: any, b: any) => {
+            return Number(b.days_ago) - Number(a.days_ago);
+          })
+        );
         setLoading(false);
       })
       .catch(() => {
