@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { DisplayOffer } from "../types/DisplayOffer";
 import { LoggedUser, defaultLoggedUserState } from "../types/LoggedUser";
 import { Application } from "../types/Application";
+import { SortType } from "../types/SortType";
 
 export const Contexts = createContext<any>(null);
 
@@ -34,6 +35,15 @@ export function ContextsProvider({ children }: any) {
   };
   const addJob = (job: DisplayOffer) => {
     setJobs((prevState) => [...prevState, job]);
+  };
+  const sortJobs = (sortType: SortType) => {
+    if (sortType === "latest") {
+      setJobs(
+        jobs.sort((a, b) => {
+          return Number(a.days_ago) - Number(b.days_ago);
+        })
+      );
+    }
   };
 
   const removeJob = (id: string) => {
@@ -76,6 +86,7 @@ export function ContextsProvider({ children }: any) {
         applications,
         overwriteApplications,
         addApplication,
+        sortJobs,
       }}
     >
       {children}

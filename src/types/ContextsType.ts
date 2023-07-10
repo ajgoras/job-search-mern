@@ -14,4 +14,5 @@ export interface ContextsType {
   applications: Application[];
   overwriteApplications: any;
   addApplication: any;
+  sortJobs: any;
 }

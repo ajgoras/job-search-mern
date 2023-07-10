@@ -22,6 +22,7 @@ describe("Show Applications Modal Test", () => {
       applications: mockApplications(),
       overwriteApplications: () => {},
       addApplication: () => {},
+      sortJobs: () => {},
     };
     render(
       <Contexts.Provider value={mockData}>
@@ -56,6 +57,7 @@ describe("Show Applications Modal Test", () => {
       applications: mockApplications(),
       overwriteApplications: () => {},
       addApplication: () => {},
+      sortJobs: () => {},
     };
     if (whichCompany === 1) {
       mockData.loggedUser = mockLoggedUser("experttechnologies@gmail.com");
