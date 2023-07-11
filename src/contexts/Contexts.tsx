@@ -39,9 +39,12 @@ export function ContextsProvider({ children }: any) {
   const sortJobs = (sortType: SortType) => {
     if (sortType === "latest") {
       setJobs(
-        jobs.sort((a, b) => {
-          return Number(a.days_ago) - Number(b.days_ago);
-        })
+        [...jobs].sort((a, b) => Number(b.days_ago) - Number(a.days_ago))
+      );
+    }
+    if (sortType === "oldest") {
+      setJobs(
+        [...jobs].sort((a, b) => Number(a.days_ago) - Number(b.days_ago))
       );
     }
   };

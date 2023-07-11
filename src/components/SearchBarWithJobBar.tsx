@@ -1,10 +1,12 @@
 import "../styles/SearchBar.css";
 import "../styles/style.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Fade } from "react-reveal";
 import TagsModal from "./TagsModal";
 import JobBar from "./JobBar";
 import { SearchTag } from "../types/SearchTag";
+import { ContextsType } from "../types/ContextsType";
+import { Contexts } from "../contexts/Contexts";
 
 export default function SearchBarWithJobBar() {
   const [searchText, setSearchText] = useState("");
@@ -13,6 +15,18 @@ export default function SearchBarWithJobBar() {
   });
   const [modalShow, setModalShow] = useState(false);
 
+  const { sortJobs }: ContextsType = useContext(Contexts);
+
+  const handleSortingSelect = (e: any) => {
+    if (e.target !== null) {
+      if (e.target.value === "latest") {
+        sortJobs("latest");
+      }
+      if (e.target.value === "oldest") {
+        sortJobs("oldest");
+      }
+    }
+  };
   const handleChangeInput = (e: any) => setSearchText(e.target.value);
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -104,7 +118,7 @@ export default function SearchBarWithJobBar() {
           <div id="sortingLabelContainer">
             <label>Sorting</label>
           </div>
-          <select>
+          <select onChange={handleSortingSelect}>
             <option>latest</option>
             <option>oldest</option>
             <option>highest salary</option>
