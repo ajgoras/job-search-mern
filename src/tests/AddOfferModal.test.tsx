@@ -26,6 +26,7 @@ describe("Add Offer Modal Test", () => {
       applications: [],
       overwriteApplications: () => {},
       addApplication: () => {},
+      sortJobs: () => {},
     };
 
     const newOfferData = {

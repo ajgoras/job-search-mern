@@ -2,6 +2,8 @@ import { createContext, useState } from "react";
 import { DisplayOffer } from "../types/DisplayOffer";
 import { LoggedUser, defaultLoggedUserState } from "../types/LoggedUser";
 import { Application } from "../types/Application";
+import { SortType } from "../types/SortType";
+import { getOnlyNumbersFromString } from "../functions/getOnlyNumbersFromString";
 
 export const Contexts = createContext<any>(null);
 
@@ -34,6 +36,36 @@ export function ContextsProvider({ children }: any) {
   };
   const addJob = (job: DisplayOffer) => {
     setJobs((prevState) => [...prevState, job]);
+  };
+  const sortJobs = (sortType: SortType) => {
+    if (sortType === "latest") {
+      setJobs(
+        [...jobs].sort((a, b) => Number(b.days_ago) - Number(a.days_ago))
+      );
+    }
+    if (sortType === "oldest") {
+      setJobs(
+        [...jobs].sort((a, b) => Number(a.days_ago) - Number(b.days_ago))
+      );
+    }
+    if (sortType === "highest salary") {
+      setJobs(
+        [...jobs].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(b.salary)) -
+            Number(getOnlyNumbersFromString(a.salary))
+        )
+      );
+    }
+    if (sortType === "lowest salary") {
+      setJobs(
+        [...jobs].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(a.salary)) -
+            Number(getOnlyNumbersFromString(b.salary))
+        )
+      );
+    }
   };
 
   const removeJob = (id: string) => {
@@ -76,6 +108,7 @@ export function ContextsProvider({ children }: any) {
         applications,
         overwriteApplications,
         addApplication,
+        sortJobs,
       }}
     >
       {children}
