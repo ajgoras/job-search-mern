@@ -9,7 +9,6 @@
 }
 
 .jobSearchLogo {
-  pointer-events: none;
   user-select: none;
   height: 60px;
   width: auto;
