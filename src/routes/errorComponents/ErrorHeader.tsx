@@ -1,7 +1,9 @@
 import "../../styles/style.css";
 import "../../styles/Header.css";
+import { useNavigate } from "react-router-dom";
 
 function ErrorHeader() {
+  const navigate = useNavigate();
   return (
     <div>
       <div id="upperNavbar">
@@ -9,6 +11,7 @@ function ErrorHeader() {
           className="jobSearchLogo"
           src="https://raw.githubusercontent.com/ajgoras/job-search-mern/main/csv/images/job-search-logo-white.png"
           alt="logo"
+          onClick={() => navigate("/")}
         ></img>
       </div>
       <div id="headerTextDiv">

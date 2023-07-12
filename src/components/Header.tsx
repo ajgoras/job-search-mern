@@ -16,6 +16,7 @@ function Header() {
           className="jobSearchLogo"
           src="https://raw.githubusercontent.com/ajgoras/job-search-mern/main/csv/images/job-search-logo-white.png"
           alt="logo"
+          onClick={() => navigate("/")}
         ></img>
         <div className="headerButtonsDiv" title="headerButtonsDiv">
           {loggedUser.email === "" ? (
