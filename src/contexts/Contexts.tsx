@@ -3,6 +3,7 @@ import { DisplayOffer } from "../types/DisplayOffer";
 import { LoggedUser, defaultLoggedUserState } from "../types/LoggedUser";
 import { Application } from "../types/Application";
 import { SortType } from "../types/SortType";
+import { getOnlyNumbersFromString } from "../functions/getOnlyNumbersFromString";
 
 export const Contexts = createContext<any>(null);
 
@@ -45,6 +46,24 @@ export function ContextsProvider({ children }: any) {
     if (sortType === "oldest") {
       setJobs(
         [...jobs].sort((a, b) => Number(a.days_ago) - Number(b.days_ago))
+      );
+    }
+    if (sortType === "highest salary") {
+      setJobs(
+        [...jobs].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(b.salary)) -
+            Number(getOnlyNumbersFromString(a.salary))
+        )
+      );
+    }
+    if (sortType === "lowest salary") {
+      setJobs(
+        [...jobs].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(a.salary)) -
+            Number(getOnlyNumbersFromString(b.salary))
+        )
       );
     }
   };

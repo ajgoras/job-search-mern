@@ -25,6 +25,12 @@ export default function SearchBarWithJobBar() {
       if (e.target.value === "oldest") {
         sortJobs("oldest");
       }
+      if (e.target.value === "highest salary") {
+        sortJobs("highest salary");
+      }
+      if (e.target.value === "lowest salary") {
+        sortJobs("lowest salary");
+      }
     }
   };
   const handleChangeInput = (e: any) => setSearchText(e.target.value);
