@@ -34,8 +34,6 @@ describe("Should sort job offers by selected option", () => {
       salaries.push(Number(getOnlyNumbersFromString(salary.innerHTML)));
     });
 
-    console.log(salaries);
-
     const isSorted = (salaries: Number[]) =>
       salaries.every((v, i, a) => !i || a[i - 1] <= v);
 
