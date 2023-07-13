@@ -35,7 +35,7 @@ describe("Add Offer Modal Test", () => {
       technology_1: "HTML",
       technology_2: "React",
       technology_3: "TypeScript",
-      salary: "$3900",
+      salary: "3900 $",
       contract_types: "B2B",
       job_type: "Frontend",
       country: "Poland",
