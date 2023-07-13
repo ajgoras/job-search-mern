@@ -124,11 +124,11 @@ export default function SearchBarWithJobBar() {
           <div id="sortingLabelContainer">
             <label>Sorting</label>
           </div>
-          <select onChange={handleSortingSelect}>
-            <option>latest</option>
-            <option>oldest</option>
-            <option>highest salary</option>
-            <option>lowest salary</option>
+          <select onChange={handleSortingSelect} title="sortingSelect">
+            <option title="sortingSelect-option">latest</option>
+            <option title="sortingSelect-option">oldest</option>
+            <option title="sortingSelect-option">highest salary</option>
+            <option title="sortingSelect-option">lowest salary</option>
           </select>
         </div>
       </Fade>

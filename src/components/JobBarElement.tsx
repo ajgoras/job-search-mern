@@ -55,7 +55,7 @@ export default function JobBarElement({
               </p>
             </div>
             <div>
-              <p className="salary">💰💰 {job.salary}</p>
+              <p className="salary" title="salary">💰💰 {job.salary}</p>
             </div>
             <p className="jobSideInfo">
               {renderTime(job.days_ago)} ago - {job.contract_types} -{" "}
