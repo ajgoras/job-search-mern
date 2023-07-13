@@ -1,5 +1,4 @@
-import React from "react";
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Contexts } from "../contexts/Contexts";
 import "@testing-library/jest-dom";
 import { ContextsType } from "../types/ContextsType";
