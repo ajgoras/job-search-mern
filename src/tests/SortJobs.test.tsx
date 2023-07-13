@@ -6,6 +6,40 @@ import { router } from "../routes/router";
 import { getOnlyNumbersFromString } from "../functions/getOnlyNumbersFromString";
 
 describe("Should sort job offers by selected option", () => {
+  test("should sort job offers by oldest", async () => {
+    render(
+      <ContextsProvider>
+        <RouterProvider router={router} />
+      </ContextsProvider>
+    );
+
+    const jobBarContainer = screen.getByTitle("jobBarContainer");
+    expect(jobBarContainer).toBeInTheDocument();
+
+    const sortingSelect = screen.getByTitle("sortingSelect");
+    let options: HTMLOptionElement[] = screen.getAllByTitle(
+      "sortingSelect-option"
+    );
+
+    const days_ago: Number[] = [];
+    const days_agoElements = await screen.findAllByTitle("days_ago");
+
+    fireEvent.change(sortingSelect, { target: { value: "oldest" } });
+    expect(options[0].selected).toBeFalsy();
+    expect(options[1].selected).toBeTruthy();
+    expect(options[2].selected).toBeFalsy();
+    expect(options[3].selected).toBeFalsy();
+
+    days_agoElements.forEach((time) => {
+      days_ago.push(Number(getOnlyNumbersFromString(time.innerHTML)));
+    });
+
+    const isSorted = (days_ago: Number[]) =>
+      days_ago.every((v, i, a) => !i || a[i - 1] <= v);
+
+    expect(isSorted(days_ago)).toBeTruthy();
+  });
+
   test("should sort job offers by highest salary", async () => {
     render(
       <ContextsProvider>

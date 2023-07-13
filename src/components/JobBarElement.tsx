@@ -13,7 +13,7 @@ export default function JobBarElement({
   setjobofferforapply,
   setremoveoffermodalshow,
 }: any) {
-  const {loggedUser}:ContextsType = useContext(Contexts);
+  const { loggedUser }: ContextsType = useContext(Contexts);
   const loggedUserCompanyName = loggedUser.company_name;
   const { jobs, overwriteJobs }: ContextsType = useContext(Contexts);
   return (
@@ -55,12 +55,17 @@ export default function JobBarElement({
               </p>
             </div>
             <div>
-              <p className="salary" title="salary">💰💰 {job.salary}</p>
+              <p className="salary" title="salary">
+                💰💰 {job.salary}
+              </p>
             </div>
             <p className="jobSideInfo">
               {renderTime(job.days_ago)} ago - {job.contract_types} -{" "}
               {job.job_type}
             </p>
+            <span className="displayNone" title="days_ago">
+              {job.days_ago}
+            </span>
             <div className="jobCountry techStackInfo">
               <h4>Localization: </h4>
               <span className="jobSideInfo">{job.country}</span>
