@@ -1,6 +1,15 @@
-.error-component-div{
+.error-component-div {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  
+
+}
+
+.error-show-animation {
+  transition: all .3s ease-in-out;
+}
+
+.error-opacity0 {
+  transition: all 1s ease-in-out;
+  opacity: 0;
 }
