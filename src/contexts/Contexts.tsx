@@ -84,7 +84,6 @@ export function ContextsProvider({ children }: any) {
   const handleLogout = () => {
     sessionStorage.removeItem("loggedUser");
     sessionStorage.removeItem("loggedAsAdmin");
-    window.location.reload();
   };
 
   const overwriteApplications = (value: Application[]) => {

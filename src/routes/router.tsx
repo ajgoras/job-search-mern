@@ -7,6 +7,7 @@ import ErrorHeader from "./miscComponents/ErrorHeader";
 import AddOfferModal from "../components/AddOfferModal";
 import LoginModal from "../components/LoginModal";
 import RegisterModal from "../components/RegisterModal";
+import LoggedOutComponent from "./miscComponents/LoggedOutInfoComponent";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,17 @@ export const router = createBrowserRouter([
         </div>
         <RegisterModal></RegisterModal>
       </>
+    ),
+  },
+  {
+    path: "successfullyloggedout",
+    element: (
+      <div id="Index">
+        <div id="upperBackground">
+          <ErrorHeader></ErrorHeader>
+        </div>
+        <LoggedOutComponent></LoggedOutComponent>
+      </div>
     ),
   },
 ]);

@@ -53,6 +53,8 @@ function Header() {
               id="loginButton"
               onClick={() => {
                 handleLogout();
+                navigate("successfullyloggedout");
+                window.location.reload();
               }}
             >
               Logout
