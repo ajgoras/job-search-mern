@@ -72,6 +72,7 @@
   border-radius: 5px;
   font-size: 15px;
   background: white;
+  color: black;
 }
 
 #sortingContainer select:active,
