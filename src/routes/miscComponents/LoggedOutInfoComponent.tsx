@@ -11,7 +11,7 @@ export default function LoggedOutComponent() {
     }, 150);
     setTimeout(() => {
       navigate("/");
-    }, 1350);
+    }, 1350); //eslint-disable-next-line
   }, []);
 
   return (
