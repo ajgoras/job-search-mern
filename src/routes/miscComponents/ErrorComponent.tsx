@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/ErrorComponent.css";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
