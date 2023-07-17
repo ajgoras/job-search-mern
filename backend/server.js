@@ -228,7 +228,7 @@ app.post("/register", async (req, res) => {
 app.post("/create", (req, res) => {
   const newOffer = new Offer({
     company_name: req.body.company_name,
-    days_ago: Date.now().toString(),
+    days_ago: req.body.days_ago,
     contract_types: req.body.contract_types,
     country: req.body.country,
     ad_content: req.body.ad_content,
