@@ -91,6 +91,7 @@ function AddOfferModal(props: any) {
         setMessage(`Successfully added ${offer.ad_content} offer!`);
         setHideModalBody(true);
         setAlertModalShow(true);
+        addJob(offer);
         setOffer({
           company_name: "",
           days_ago: "",
@@ -107,7 +108,6 @@ function AddOfferModal(props: any) {
           about_us: "",
           logo: "",
         });
-        addJob(offer);
       }
     }
   };
@@ -564,6 +564,8 @@ function AddOfferModal(props: any) {
                     })
                   ) {
                     startShake();
+                  } else {
+                    setOffer({ ...offer, days_ago: Date.now().toString() });
                   }
                 }}
               >
