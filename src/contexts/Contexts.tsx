@@ -19,6 +19,7 @@ export function ContextsProvider({ children }: any) {
       return defaultLoggedUserState;
     }
   });
+
   const [loggedAsAdmin, setLoggedAsAdmin] = useState(() => {
     const sessionStorageValue = sessionStorage.getItem("loggedAsAdmin");
     if (sessionStorageValue !== null) {
@@ -34,10 +35,47 @@ export function ContextsProvider({ children }: any) {
   const overwriteJobs = (value: DisplayOffer[]) => {
     setJobs(value);
   };
+
+  //selected sorting state
+  const [sortState, setSortState] = useState<SortType>("latest");
+
   const addJob = (job: DisplayOffer) => {
-    setJobs((prevState) => [...prevState, job]);
+    if (sortState === "latest") {
+      setJobs((prevState) =>
+        [...prevState, job].sort(
+          (a, b) => Number(b.days_ago) - Number(a.days_ago)
+        )
+      );
+    }
+    if (sortState === "oldest") {
+      setJobs((prevState) =>
+        [...prevState, job].sort(
+          (a, b) => Number(a.days_ago) - Number(b.days_ago)
+        )
+      );
+    }
+    if (sortState === "highest salary") {
+      setJobs((prevState) =>
+        [...prevState, job].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(b.salary)) -
+            Number(getOnlyNumbersFromString(a.salary))
+        )
+      );
+    }
+    if (sortState === "lowest salary") {
+      setJobs((prevState) =>
+        [...prevState, job].sort(
+          (a, b) =>
+            Number(getOnlyNumbersFromString(a.salary)) -
+            Number(getOnlyNumbersFromString(b.salary))
+        )
+      );
+    }
   };
+
   const sortJobs = (sortType: SortType) => {
+    setSortState(sortType);
     if (sortType === "latest") {
       setJobs(
         [...jobs].sort((a, b) => Number(b.days_ago) - Number(a.days_ago))
@@ -81,6 +119,7 @@ export function ContextsProvider({ children }: any) {
       sessionStorage.setItem("loggedAsAdmin", JSON.stringify("true"));
     }
   };
+
   const handleLogout = () => {
     sessionStorage.removeItem("loggedUser");
     sessionStorage.removeItem("loggedAsAdmin");
@@ -89,6 +128,7 @@ export function ContextsProvider({ children }: any) {
   const overwriteApplications = (value: Application[]) => {
     setApplications(value);
   };
+  
   const addApplication = (application: Application) => {
     setApplications((prevState) => [...prevState, application]);
   };
