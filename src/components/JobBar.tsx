@@ -142,16 +142,16 @@ export default function JobBar({ searchText, searchTags }: any) {
   const params = useParams();
   //runs every time offer clicked
   useEffect(() => {
-      const newJobs = jobs;
-      newJobs.forEach((job: DisplayOffer, index: number) => {
-        job.isDescriptionVisible = false;
-        job.frontendId = index;
-      });
-      const newJob = newJobs.find((el: DisplayOffer) => el._id === params._id);
-      if (newJob) {
-        newJob.isDescriptionVisible = true;
-        overwriteJobs([...newJobs]);
-      }
+    const newJobs = jobs;
+    newJobs.forEach((job: DisplayOffer, index: number) => {
+      job.isDescriptionVisible = false;
+      job.frontendId = index;
+    });
+    const newJob = newJobs.find((el: DisplayOffer) => el._id === params._id);
+    if (newJob) {
+      newJob.isDescriptionVisible = true;
+      overwriteJobs([...newJobs]);
+    } // eslint-disable-next-line
   }, [params._id]);
 
   return (
