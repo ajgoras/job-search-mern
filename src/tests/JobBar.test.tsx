@@ -2,11 +2,14 @@ import { render, screen } from "@testing-library/react";
 import JobBar from "../components/JobBar";
 import { ContextsProvider } from "../contexts/Contexts";
 import "@testing-library/jest-dom";
+import { BrowserRouter } from "react-router-dom";
 
 test("should render default job offers", async () => {
   render(
     <ContextsProvider>
-      <JobBar searchTags={[]} searchText=""></JobBar>
+      <BrowserRouter>
+        <JobBar searchTags={[]} searchText=""></JobBar>
+      </BrowserRouter>
     </ContextsProvider>
   );
   const jobsCompanies = [
