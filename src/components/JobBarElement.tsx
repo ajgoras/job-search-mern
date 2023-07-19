@@ -7,6 +7,7 @@ import { DisplayOffer } from "../types/DisplayOffer";
 import { ContextsType } from "../types/ContextsType";
 import { useContext } from "react";
 import { Contexts } from "../contexts/Contexts";
+import { useNavigate } from "react-router-dom";
 export default function JobBarElement({
   job,
   setapplymodalshow,
@@ -15,7 +16,9 @@ export default function JobBarElement({
 }: any) {
   const { loggedUser }: ContextsType = useContext(Contexts);
   const loggedUserCompanyName = loggedUser.company_name;
-  const { jobs, overwriteJobs }: ContextsType = useContext(Contexts);
+  const { jobs }: ContextsType = useContext(Contexts);
+  const navigate = useNavigate();
+
   return (
     <div
       key={job.id_}
@@ -26,8 +29,7 @@ export default function JobBarElement({
           (el: DisplayOffer) => el.frontendId === job.frontendId
         );
         if (newJob) {
-          newJob.isDescriptionVisible = true;
-          overwriteJobs([...newJobs]);
+          navigate(`/job/${newJob._id}`);
         }
       }}
     >
