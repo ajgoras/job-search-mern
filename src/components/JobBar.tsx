@@ -10,6 +10,7 @@ import JobBarElement from "./JobBarElement";
 import { axiosUrls } from "../axiosUrls/axiosUrls";
 import { Contexts } from "../contexts/Contexts";
 import { ContextsType } from "../types/ContextsType";
+import { useParams } from "react-router-dom";
 
 export default function JobBar({ searchText, searchTags }: any) {
   //dbSchema
@@ -97,7 +98,7 @@ export default function JobBar({ searchText, searchTags }: any) {
   const [loadingLongerThan5sec, setLoadingLongerThan5sec] = useState(false);
   const [isBackendError, setIsBackendError] = useState(false);
 
-  //getting data from node.js server
+  //getting job offers from db
   useEffect(() => {
     axios
       .get(axiosUrls.getOffersUrl)
@@ -108,6 +109,26 @@ export default function JobBar({ searchText, searchTags }: any) {
           })
         );
         setLoading(false);
+        //setting description visibility to false on every offer
+        const newJobss = res.data.sort((a: any, b: any) => {
+          return Number(b.days_ago) - Number(a.days_ago);
+        });
+        newJobss.forEach((job: DisplayOffer, index: number) => {
+          job.isDescriptionVisible = false;
+          job.frontendId = index;
+        });
+        overwriteJobs(newJobss);
+        //if job offer link is active, offer description will open
+        const newJobs = res.data.sort((a: any, b: any) => {
+          return Number(b.days_ago) - Number(a.days_ago);
+        });
+        const newJob = newJobs.find(
+          (el: DisplayOffer) => el._id === params._id
+        );
+        if (newJob) {
+          newJob.isDescriptionVisible = true;
+          overwriteJobs([...newJobs]);
+        }
       })
       .catch(() => {
         setIsBackendError(true);
@@ -118,17 +139,21 @@ export default function JobBar({ searchText, searchTags }: any) {
     setLoading(true); // eslint-disable-next-line
   }, []);
 
+  const params = useParams();
+  //runs every time offer clicked
   useEffect(() => {
-    //console.log(jobs);
-    const newJobs = jobs;
-    newJobs.forEach((job, index) => {
-      job.isDescriptionVisible = false;
-      job.frontendId = index;
-    });
-    overwriteJobs(newJobs); // eslint-disable-next-line
-  }, [jobs]);
+      const newJobs = jobs;
+      newJobs.forEach((job: DisplayOffer, index: number) => {
+        job.isDescriptionVisible = false;
+        job.frontendId = index;
+      });
+      const newJob = newJobs.find((el: DisplayOffer) => el._id === params._id);
+      if (newJob) {
+        newJob.isDescriptionVisible = true;
+        overwriteJobs([...newJobs]);
+      }
+  }, [params._id]);
 
-  //database output to frontend
   return (
     <div id="jobBarContainer" title="jobBarContainer">
       <div className="jobBar">

@@ -30,6 +30,25 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/job/:_id",
+    element: (
+      <div id="Index">
+        <div id="upperBackground">
+          <Header></Header>
+        </div>
+        <SearchBarWithJobBar></SearchBarWithJobBar>
+      </div>
+    ),
+    errorElement: (
+      <div id="Index">
+        <div id="upperBackground">
+          <ErrorHeader></ErrorHeader>
+        </div>
+        <ErrorComponent></ErrorComponent>
+      </div>
+    ),
+  },
+  {
     path: "applications",
     element: (
       <>
