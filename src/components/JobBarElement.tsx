@@ -5,7 +5,7 @@ import { renderSeniority } from "../functions/renderSeniority";
 import { renderTime } from "../functions/renderTime";
 import { DisplayOffer } from "../types/DisplayOffer";
 import { ContextsType } from "../types/ContextsType";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Contexts } from "../contexts/Contexts";
 import { useNavigate } from "react-router-dom";
 export default function JobBarElement({
@@ -18,11 +18,20 @@ export default function JobBarElement({
   const loggedUserCompanyName = loggedUser.company_name;
   const { jobs }: ContextsType = useContext(Contexts);
   const navigate = useNavigate();
+  const jobElementRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div
       key={job.id_}
       className="jobBarElement"
+      ref={jobElementRef}
+      onLoad={() => {
+        setTimeout(() => {
+          if (job.isDescriptionVisible) {
+            jobElementRef.current?.scrollIntoView();
+          }
+        }, 500);
+      }}
       onClick={() => {
         const newJobs = jobs;
         const newJob = newJobs.find(
@@ -30,6 +39,9 @@ export default function JobBarElement({
         );
         if (newJob) {
           navigate(`/job/${newJob._id}`);
+          setTimeout(() => {
+            jobElementRef.current?.scrollIntoView();
+          }, 50);
         }
       }}
     >
