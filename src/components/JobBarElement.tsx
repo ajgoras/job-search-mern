@@ -5,7 +5,7 @@ import { renderSeniority } from "../functions/renderSeniority";
 import { renderTime } from "../functions/renderTime";
 import { DisplayOffer } from "../types/DisplayOffer";
 import { ContextsType } from "../types/ContextsType";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { Contexts } from "../contexts/Contexts";
 import { useNavigate } from "react-router-dom";
 export default function JobBarElement({
